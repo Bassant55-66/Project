@@ -30,13 +30,13 @@ def home():
     return "Welcome to TPT E-commerce API!"
 
 
-# Get all products
+
 @app.route("/api/products", methods=["GET"])
 def get_products():
     return jsonify(products)
 
 
-# Get one product by ID
+
 @app.route("/api/products/<int:product_id>", methods=["GET"])
 def get_product(product_id):
     for product in products:
@@ -45,7 +45,7 @@ def get_product(product_id):
 
     return jsonify({"message": "Product not found"}), 404
 
-# Add product to cart
+
 @app.route("/api/cart", methods=["POST"])
 def add_to_cart():
     data = request.get_json()
@@ -82,12 +82,12 @@ def add_to_cart():
 
     return jsonify({"message": "Product not found"}), 404
 
-# Get cart
+
 @app.route("/api/cart", methods=["GET"])
 def get_cart():
     return jsonify(cart)
 
-# Update cart quantity
+
 @app.route("/api/cart/<int:product_id>", methods=["PUT","DELETE"])
 def update_cart(product_id):
     if request.method == "DELETE":
@@ -119,7 +119,7 @@ def update_cart(product_id):
 
     return jsonify({"message": "Product not found in cart"}), 404
 
-# Add a new product
+
 @app.route("/api/products", methods=["POST"])
 def add_product():
     data = request.get_json()
@@ -148,7 +148,7 @@ def add_product():
         "product": new_product
     }), 201
 
-# Delete a product
+
 @app.route("/api/products/<int:product_id>", methods=["DELETE"])
 def delete_product(product_id):
     for product in products:
@@ -160,7 +160,7 @@ def delete_product(product_id):
 
     return jsonify({"message": "Product not found"}), 404
 
-# Update a product
+
 @app.route("/api/products/<int:product_id>", methods=["PUT"])
 def update_product(product_id):
     data = request.get_json()
